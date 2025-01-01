@@ -32,14 +32,18 @@ const PDFContent = React.forwardRef((props, ref) => {
 
   React.useEffect(() => {
     // Generate the QR code as a PNG
-    QRCode.toDataURL(qrCodeData, { type: "image/jpeg",margin: 0 }, (err, url) => {
-      if (!err) {
-        console.log("Generated QR Code URL:", url); // Debug log
-        setQrCodeSVG(url); // Use the correct state setter
-      } else {
-        console.error("QR Code generation error:", err);
+    QRCode.toDataURL(
+      qrCodeData,
+      { type: "image/jpeg", margin: 0 },
+      (err, url) => {
+        if (!err) {
+          console.log("Generated QR Code URL:", url); // Debug log
+          setQrCodeSVG(url); // Use the correct state setter
+        } else {
+          console.error("QR Code generation error:", err);
+        }
       }
-    });
+    );
   }, [qrCodeData]);
 
   console.log("mithun", qrCodeData);
